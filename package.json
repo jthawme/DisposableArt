@@ -1,0 +1,16 @@
+{
+  "name": "disposableart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "pdfkit": "^0.9.0",
+    "pi-camera": "^1.2.1",
+    "printer-lp": "^1.0.3"
+  }
+}
