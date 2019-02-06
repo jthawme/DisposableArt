@@ -5,7 +5,9 @@ const FILE = path.resolve(__dirname, '..', 'output', 'art.pdf');
 const WIDTH = 135;
 const HEIGHT = 192;
 const FONTS = {
-  sacramento: path.resolve(__dirname, 'signatures', 'Sacramento-Regular.ttf')
+  sacramento: path.resolve(__dirname, 'signatures', 'Sacramento-Regular.ttf'),
+  dancing: path.resolve(__dirname, 'signatures', 'DancingScript-Regular.ttf'),
+  montserrat: path.resolve(__dirname, 'signatures', 'Montserrat-Medium.ttf'),
 };
 
 // The lively characters in this charade

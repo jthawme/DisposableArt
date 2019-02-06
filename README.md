@@ -23,3 +23,24 @@ A function that has 4 parameters passed to it:
 
 Because the create function has this end function, it allows you to create work
 asynchronously, possibly requiring an external API etc.
+
+Template:
+```
+module.exports = {
+  name: 'Warhol',
+  signature: 'sacramento|dancing|montserrat'
+  create: (canvas, width, height, end) => {
+    end();
+  }
+}
+```
+
+### Available fonts (for signatures)
+
+- **dancing** [Dancing Script](https://fonts.google.com/specimen/Dancing+Script)
+- **sacramento** [Sacramento](https://fonts.google.com/specimen/Sacramento)
+- **montserrat** [Montserrat](https://fonts.google.com/specimen/Montserrat)
+
+## Developing an artist file
+
+Run `npm run workshop` and open http://localhost:3000. From here you can see a sort of live reloading view of your artist file.

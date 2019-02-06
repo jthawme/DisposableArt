@@ -1,6 +1,7 @@
+const path = require('path');
 const PiCamera = require('pi-camera');
 
-const imagePath = `${ __dirname }/test.jpg`;
+const imagePath = path.resolve(__dirname, '..', 'output', 'cam.jpg');
 
 const myCamera = new PiCamera({
   mode: 'photo',
