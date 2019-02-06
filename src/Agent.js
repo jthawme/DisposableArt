@@ -25,7 +25,9 @@ module.exports = {
   makeMoney: () => {
     const stream = Distribution.prep(FILE, distributed);
     const doc = Intern.workHarder(WIDTH, HEIGHT, stream);
-    const Artiste = require('../Artists/JoyDivision.js');
+    const Artists = fs.readdirSync(path.resolve(__dirname, '..', 'Artists'));
+    const randomKey = Math.floor(Math.random() * Artists.length);
+    const Artiste = require(`../Artists/${Artists[randomKey]}`);
 
     return new Promise((resolve, reject) => {
       Artiste.create(doc, WIDTH, HEIGHT, resolve);
