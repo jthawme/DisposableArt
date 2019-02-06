@@ -17,6 +17,7 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
+    "node-crontab": "0.0.8",
     "nodemon": "^1.18.9"
   }
 }
