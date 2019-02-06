@@ -25,7 +25,7 @@ module.exports = {
   makeMoney: () => {
     const stream = Distribution.prep(FILE, distributed);
     const doc = Intern.workHarder(WIDTH, HEIGHT, stream);
-    const Artiste = require('../Artists/Basic.js');
+    const Artiste = require('../Artists/JoyDivision.js');
 
     return new Promise((resolve, reject) => {
       Artiste.create(doc, WIDTH, HEIGHT, resolve);
@@ -35,6 +35,7 @@ module.exports = {
           .translate(0, 2)
           .fontSize(6)
           .font(FONTS[Artiste.signature])
+          .fillColor('#000')
           .text(Artiste.name, WIDTH * 0.25, HEIGHT, {
             width: WIDTH * 0.75,
             align: 'right'
@@ -42,8 +43,8 @@ module.exports = {
           .text('1/1', 0, HEIGHT, {
             width: WIDTH * 0.25,
             align: 'left'
-          })
-          .fill('#000');
+          });
+
         doc.end();
       });
   },
