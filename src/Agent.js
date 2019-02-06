@@ -1,7 +1,8 @@
 // Boring technical stuff
-const blobStream = require('blob-stream');
 const path = require('path');
-const FILE = path.resolve(__dirname, '..', 'output', 'art.pdf');
+const fs = require('fs-extra');
+const FILE_DIR = path.resolve(__dirname, '..', 'output');
+const FILE = path.resolve(FILE_DIR, 'art.pdf');
 const WIDTH = 135;
 const HEIGHT = 192;
 const FONTS = {
@@ -17,6 +18,8 @@ const Distribution = require('./Distribution.js');
 const distributed = () => {
   console.log('Another job well done');
 };
+
+fs.mkdirpSync(FILE_DIR);
 
 module.exports = {
   makeMoney: () => {
