@@ -1,12 +1,12 @@
 const PDFDocument = require('pdfkit');
 
 module.exports = {
-  workHarder: (width, height, writeStream) => {
-    const topMargin = 4;
-    const signatureZone = 12;
+  workHarder: (width, height, writeStream = false, scale = 1) => {
+    const topMargin = 4 * scale;
+    const signatureZone = 12 * scale;
 
     const doc = new PDFDocument({
-      size: [ width, height + topMargin + signatureZone ],
+      size: [ (width * scale), (height * scale) + topMargin + signatureZone ],
       margins: {
         top: topMargin,
         right: 0,
@@ -15,7 +15,11 @@ module.exports = {
       }
     });
 
-    doc.pipe(writeStream);
+    if (writeStream) {
+      doc.pipe(writeStream);
+    }
+
+    doc.scale(scale, scale);
     doc.translate(0, topMargin);
 
     return doc;

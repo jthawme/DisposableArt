@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title.
+      Workshop
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href="/static/styles.css" rel="stylesheet")
+  body
+    ul.list
+    each val in artists
+      li
+        a(href="/viewer/" + val + "") #{val}

@@ -1,0 +1,14 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title.
+      Workshop
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href="/static/styles.css" rel="stylesheet")
+  body
+    div#root
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js")
+    script.
+      PDFObject.embed("/output/art.pdf", "#root");
