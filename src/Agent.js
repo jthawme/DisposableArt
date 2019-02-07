@@ -38,6 +38,7 @@ module.exports = {
           .fontSize(6)
           .font(FONTS[Artiste.signature])
           .fillColor('#000')
+          .fill('#000')
           .text(Artiste.name, WIDTH * 0.25, HEIGHT, {
             width: WIDTH * 0.75,
             align: 'right'
@@ -45,7 +46,8 @@ module.exports = {
           .text('1/1', 0, HEIGHT, {
             width: WIDTH * 0.25,
             align: 'left'
-          });
+          })
+          .fill('#000');
 
         doc.end();
       });
@@ -56,7 +58,7 @@ module.exports = {
       res = resolve;
     });
 
-    const stream = Distribution.prep(FILE, () => {
+    const stream = Distribution.pass(FILE, () => {
       res(FILE);
     });
     const doc = Intern.workHarder(WIDTH, HEIGHT, stream, 2);
@@ -66,6 +68,10 @@ module.exports = {
       Artiste.create(doc, WIDTH, HEIGHT, resolve);
     })
       .then(() => {
+        // doc.fill('black');
+        doc.save();
+        doc.fill('black');
+
         doc
           .translate(0, 2)
           .fontSize(6)

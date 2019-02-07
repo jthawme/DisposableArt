@@ -11,5 +11,13 @@ module.exports = {
     });
 
     return writeStream;
+  },
+  pass: (filePath, cb = () => {}) => {
+    const writeStream = fs.createWriteStream(filePath);
+    writeStream.on('finish', () => {
+      cb();
+    });
+
+    return writeStream;
   }
 };
