@@ -31,7 +31,7 @@ function intersect(x1, y1, x2, y2, x3, y3, x4, y4) {
 }
 
 module.exports = {
-  name: 'Jonny',
+  name: 'Sunken',
   signature: 'montserrat',
   create: (canvas, width, height, end) => {
     var rectSize = width * ((Math.random() / 2) + 0.2);

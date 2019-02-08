@@ -22,11 +22,11 @@ const distributed = () => {
 fs.mkdirpSync(FILE_DIR);
 
 module.exports = {
-  makeMoney: () => {
+  makeMoney: (artist) => {
     const stream = Distribution.prep(FILE, distributed);
     const doc = Intern.workHarder(WIDTH, HEIGHT, stream);
     const Artists = fs.readdirSync(path.resolve(__dirname, '..', 'Artists'));
-    const randomKey = Math.floor(Math.random() * Artists.length);
+    const randomKey = artist ? Artists.findIndex(a => a === `${artist}.js`) : Math.floor(Math.random() * Artists.length);
     const Artiste = require(`../Artists/${Artists[randomKey]}`);
 
     return new Promise((resolve, reject) => {

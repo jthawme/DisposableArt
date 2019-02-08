@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'Jonny',
+  name: 'Joy',
   signature: 'montserrat',
   create: (canvas, width, height, end) => {
     var size = width;

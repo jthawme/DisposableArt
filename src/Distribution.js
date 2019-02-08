@@ -5,9 +5,14 @@ module.exports = {
   prep: (filePath, cb = () => {}) => {
     const writeStream = fs.createWriteStream(filePath);
     writeStream.on('finish', () => {
-      const options = {};
-      const job = printer.printFile(filePath, options, "distributor");
-      job.on("end", cb);
+
+      if (process.env.NODE_ENV === 'production') {
+        const options = {};
+        const job = printer.printFile(filePath, options, "distributor");
+        job.on("end", cb);
+      } else {
+        cb();
+      }
     });
 
     return writeStream;

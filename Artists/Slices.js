@@ -40,7 +40,7 @@ const drawOverlay = (starting, points, circle, canvas, t) => {
 }
 
 module.exports = {
-  name: 'Jonny',
+  name: 'Slices',
   signature: 'dancing',
   create: (canvas, width, height, end) => {
     const size = width * 0.8;
