@@ -1,5 +1,3 @@
-
-
 module.exports = {
   name: 'Wolfram',
   signature: 'montserrat',
