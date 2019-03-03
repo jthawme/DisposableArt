@@ -39,10 +39,11 @@ const setup = () => {
 const randomPlusOrMinus = (val, stiffness) =>
     Math.round(val + (val || 1) * (Math.random() - 0.5) / (stiffness || 1));
 
+const rollADie = (faces = 6) => Math.floor(Math.random() * faces) + 1;
 
 const blueprintStroke = (shape) => shape
     .lineWidth(.25)
-    .strokeOpacity(.5)
+    .strokeOpacity(.3)
     .dash(2, {space: 2})
     .stroke();
 
@@ -52,7 +53,7 @@ const finalStroke = (shape) => shape
     .undash()
     .stroke();
 
-const drawArcs = () => {
+const drawArcs = (isBlueprint) => {
   const radiusStep = Math.round(
     (illsutrationOuterRadius - illustrationInnerRadius) / illustrationLayers);
 
@@ -61,25 +62,43 @@ const drawArcs = () => {
   for (let layerIndex = 0; layerIndex <= illustrationLayers; layerIndex++) {
     const randomLayerIndex = randomPlusOrMinus(layerIndex, layerIndex * 2);
 
-    blueprintStroke(
-      canvasDoc
-        .circle(0, 0, illustrationInnerRadius + radiusStep * randomLayerIndex)
-    );
+    const radius = illustrationInnerRadius + radiusStep * randomLayerIndex;
+
+    if (isBlueprint) {
+      blueprintStroke(
+        canvasDoc.circle(0, 0, radius)
+      );
+
+    } else {
+      const angleStep = 360 / illustrationSegments;
+      // Make sure that the 2 angles are not the same.
+      const angle1 = rollADie(illustrationSegments);
+      let angle2 = angle1;
+      while (angle2 === angle1) {
+        angle2 = rollADie(illustrationSegments);
+      }
+
+      finalStroke(
+        canvasDoc.arc(0, 0, radius, angleStep * angle1, angleStep * angle2)
+      );
+    }
   }
 }
 
 const drawLines = () => {
   // Draw segment lines from the inner radius to the outer radius
   for (let angle = 0; angle < Math.PI * 2; angle += Math.PI * 2 / illustrationSegments) {
+    // Need to subtract Math.PI / 2 to the andle in order to "align" it with
+    // the angle used in the the arc function.
     blueprintStroke(
       canvasDoc
         .moveTo(
-          illustrationInnerRadius * Math.cos(angle),
-          illustrationInnerRadius * Math.sin(angle)
+          illustrationInnerRadius * Math.cos(angle - Math.PI / 2),
+          illustrationInnerRadius * Math.sin(angle - Math.PI / 2)
         )
         .lineTo(
-          illsutrationOuterRadius * Math.cos(angle),
-          illsutrationOuterRadius * Math.sin(angle)
+          illsutrationOuterRadius * Math.cos(angle - Math.PI / 2),
+          illsutrationOuterRadius * Math.sin(angle - Math.PI / 2)
         )
     );
   }
@@ -89,6 +108,7 @@ const draw = () => {
   // canvasDoc.lineWidth(Math.round(illsutrationOuterRadius / 25));
   canvasDoc.lineWidth(0.25);
 
+  drawArcs(true);
   drawArcs();
   drawLines();
 };
