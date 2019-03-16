@@ -1,7 +1,7 @@
 # Disposable Art
 
 A little project that creates generative art then prints it on a receipt printer.
-The very nature of this art is that it isn't value because its produced cheaply on 
+The very nature of this art is that it isn't value because its produced cheaply on
 receipt paper, but in actual fact these are potentially once in a lifetime art works.
 
 ## Being an artist
