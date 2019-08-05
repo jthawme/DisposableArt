@@ -95,7 +95,7 @@ module.exports = {
   signature: 'montserrat',
   create: (canvas, width, height, end) => {
     cWidth = width;
-    cHeight = height;
+    cHeight = height * 0.9;
 
     getWord(random(4) + 3)
       .then(_word => {

@@ -1,5 +1,6 @@
 const fs = require('fs');
 const printer = require("printer-lp");
+const { exec } = require('child_process');
 
 module.exports = {
   prep: (filePath, cb = () => {}) => {
@@ -7,9 +8,14 @@ module.exports = {
     writeStream.on('finish', () => {
 
       if (process.env.NODE_ENV === 'production') {
-        const options = {};
-        const job = printer.printFile(filePath, options, "distributor");
-        job.on("end", cb);
+        exec(`lp -o fit-to-page ${filePath}`, (err) => {
+          if (err) {
+            console.error(err);
+          } else {
+            cb();
+          }
+        });
+        // cb();
       } else {
         cb();
       }
