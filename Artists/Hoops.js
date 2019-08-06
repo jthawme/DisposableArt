@@ -255,7 +255,7 @@ const getPointOnArc = (cx, cy, angle, radius) => {
 module.exports = {
   name: 'Hoops',
   signature: 'montserrat',
-  create: (canvas, width, height, end) => {
+  create: (canvas, { width, height }, end) => {
     const amt = 10;
     const cx = width / 2;
     const cy = height / 2;

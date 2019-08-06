@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Wolfram',
   signature: 'montserrat',
-  create: (canvas, width, height, end) => {
+  create: (canvas, { width, height }, end) => {
     var cells = [[]];
     var ruleset = [];
 

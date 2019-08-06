@@ -42,7 +42,7 @@ const drawOverlay = (starting, points, circle, canvas, t) => {
 module.exports = {
   name: 'Slices',
   signature: 'dancing',
-  create: (canvas, width, height, end) => {
+  create: (canvas, { width, height }, end) => {
     const size = width * 0.8;
     const points = Math.round(Math.random() * 12) + 3;
     const seg = (Math.PI * 2) / points;

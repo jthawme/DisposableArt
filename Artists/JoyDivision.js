@@ -1,7 +1,7 @@
 module.exports = {
   name: 'Joy',
   signature: 'montserrat',
-  create: (canvas, width, height, end) => {
+  create: (canvas, { width, height }, end) => {
     var size = width;
     var step = width / 30;
     var lines = [];

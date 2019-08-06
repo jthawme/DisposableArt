@@ -93,7 +93,7 @@ function drawLetter(canvas, char, x, y, alt = false) {
 module.exports = {
   name: 'Words',
   signature: 'montserrat',
-  create: (canvas, width, height, end) => {
+  create: (canvas, { width, height }, end) => {
     cWidth = width;
     cHeight = height * 0.9;
 

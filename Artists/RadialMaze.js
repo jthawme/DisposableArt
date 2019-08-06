@@ -192,11 +192,12 @@ const drawSegments = (blueprint) => {
 /**
  *
  * @param {PDFDocument} canvas PDFkit document
- * @param {number} width Canvas width (px)
- * @param {number} height Canvas height (px)
+ * @param {object} options
+ * @param {number} options.width Canvas width (px)
+ * @param {number} options.height Canvas height (px)
  * @param {function} end Resolve fn to invoke at the end
  */
-const create = (canvas, width, height, end) => {
+const create = (canvas, { width, height }, end) => {
   canvasDoc = canvas;
   canvasSize = { width, height };
 
